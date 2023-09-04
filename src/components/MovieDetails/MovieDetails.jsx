@@ -13,10 +13,10 @@ const MovieDetails = () => {
     <h3>Additional information</h3>
         <ul>
             <li>
-                <Link to='{Cast}'>Cast</Link>
+                <Link to='{cast}'>Cast</Link>
             </li>
             <li>
-                <Link to='{Reviews}'>Reviews</Link>
+                <Link to='{reviews}'>Reviews</Link>
             </li>
             </ul>
             <Outlet/>

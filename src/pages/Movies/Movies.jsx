@@ -1,3 +1,4 @@
+import SearchMovie from "components/SearchMovie";
 import { useEffect } from "react";
 
 const Movies = () => { 
@@ -5,7 +6,7 @@ const Movies = () => {
 //HTTP /search/search-movies 
     },[])
 
-    return (<div>Movies</div>)
+    return (<SearchMovie />)
 }
 
 export default Movies;
