@@ -2,14 +2,14 @@ import NotFound from '../../components/NotFound';
 import { useEffect, useState } from "react";
 import { ApiTrendsMovie } from '../../Services/API-query';
 import  Loader  from '../../components/Loader';
-import MoviesList from 'components/MoviesList/MoviesList';
+import MoviesList from '../../components/MoviesList';
+
 const STATUS = {
     IDLE: 'idle',
     PENDING: 'pending',
     REJECTED: 'rejected',
     RESOLVED: 'resolved',
 }
-
 
 const Home = () => { 
     const [movies, setMovies] = useState([]);

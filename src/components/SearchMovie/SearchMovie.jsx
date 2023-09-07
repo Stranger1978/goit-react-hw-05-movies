@@ -4,23 +4,25 @@ import { BsSearch } from 'react-icons/bs';
 import { toast } from 'react-toastify';
 //import PropTypes from 'prop-types';
 
-const SearchMovie = ({onSubmit}) => {
+const SearchMovie = ({ onSubmit }) => {
     const [searchValue, setSearchValue] = useState('');
-  
+    //const [searchParams, setSearchParams] = useSearchParams();
+
     const handleChange = e => {
-        const { value } = e.currentTarget;
+        const { value } = e.target;
+        //setSearchParams({ query: value });
         setSearchValue(value);
     };
 
     const handleSubmit = e => {
         e.preventDefault();
         if (searchValue.trim() === '') {
-            return toast.warn('Enter new data for searh');
+            return toast.warn('Enter data for searh');
         }
-      
         onSubmit(searchValue);
         setSearchValue('');
     }
+    
     return (
         <form className={Style.SearchForm} onSubmit={handleSubmit}>
              <input

@@ -21,4 +21,13 @@ export const ApiTrendsMovie = () => {
 };
 
 
+export const ApiFindMovie = (queryValue) => {
+    const SEARCH_URL = `https://api.themoviedb.org/3/search/movie?query=${queryValue}&language=en-US&page=1`;
+return fetch(SEARCH_URL, options)
+        .then(response => {
+            return response.json();
+        });
+ }
+
+
 
