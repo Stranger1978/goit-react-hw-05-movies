@@ -1,28 +1,55 @@
-import { useParams, Link, Outlet } from "react-router-dom";
-import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { ApiMovieDetails } from "../../Services/API-query";
+import MovieCard from "components/MovieCard/MovieCard";
+import Loader from '../../components/Loader';
+import NotFound from '../../components/NotFound';
+
+const STATUS = {
+    IDLE: 'idle',
+    PENDING: 'pending',
+    REJECTED: 'rejected',
+    RESOLVED: 'resolved',
+}
 
 const MovieDetails = () => {
     const { movieId } = useParams();
-     useEffect(() => { 
-//HTTP /search/search-movies 
-    },[])
+    const [movieDetail, setMovieDetail] = useState({});
+    const [status, setStatus] = useState(STATUS.IDLE);
+    const [error, setError] = useState(null);
+ 
+    
+    
+    useEffect(() => {
+        const detailsInfo = async () => {
+            setStatus(STATUS.PENDING);
 
+            try {
+                const results = await ApiMovieDetails(movieId);
+                console.log(results);
+                
+                setMovieDetail(...movieId, results);
+                setStatus(STATUS.RESOLVED);
+                setError('');
+            } catch (error) {
+                setStatus(STATUS.REJECTED);
+                setError(error.message);
+            }
+        };
+        detailsInfo();
+         console.log(movieDetail);
+        }, [movieDetail, movieId]);
+       
     return (
-    <>
-    <div>Movie Details: {movieId}</div>
-    <h3>Additional information</h3>
-        <ul>
-            <li>
-                <Link to='{cast}'>Cast</Link>
-            </li>
-            <li>
-                <Link to='{reviews}'>Reviews</Link>
-            </li>
-            </ul>
-            <Outlet/>
-            </>
+    
+   <div>
+        {status === STATUS.PENDING && <Loader/>}
+        {status === STATUS.REJECTED && <NotFound message={error} />}
+        {status === STATUS.RESOLVED && <MovieCard movies={movieDetail} />}
+    </div> 
     )
-
 }
 
 export default MovieDetails;
+
+ //<Button onClick={} />

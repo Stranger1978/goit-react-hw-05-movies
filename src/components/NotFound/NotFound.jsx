@@ -1,7 +1,6 @@
 
-const NotFound = (message) => {
-    console.log('My message:', message);
-    return (<div>Page not found: {message} </div> )
+const NotFound = ({ message }) => {
+    return (<div> {message} </div> )
 }
  
 export default NotFound;

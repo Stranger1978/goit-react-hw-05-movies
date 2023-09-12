@@ -1,24 +1,18 @@
 import { useState } from 'react';
 import Style from './SearchMovie.module.css';
 import { BsSearch } from 'react-icons/bs';
-import { toast } from 'react-toastify';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const SearchMovie = ({ onSubmit }) => {
-    const [searchValue, setSearchValue] = useState('');
-    //const [searchParams, setSearchParams] = useSearchParams();
+    const [searchValue, setSearchValue] = useState("");
 
     const handleChange = e => {
         const { value } = e.target;
-        //setSearchParams({ query: value });
-        setSearchValue(value);
+        setSearchValue(value.toLowerCase().trim());
     };
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (searchValue.trim() === '') {
-            return toast.warn('Enter data for searh');
-        }
         onSubmit(searchValue);
         setSearchValue('');
     }
@@ -43,3 +37,7 @@ const SearchMovie = ({ onSubmit }) => {
 };
  
 export default SearchMovie;
+
+SearchMovie.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
