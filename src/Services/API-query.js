@@ -32,3 +32,18 @@ export const ApiMovieDetails = (movieId) => {
         });
 }
 
+export const ApiMovieReview = (movieId) => {
+    const REVIEW_URL = `https://api.themoviedb.org/3/movie/${movieId}/reviews`;
+    return fetch(REVIEW_URL, options)
+        .then(response => {
+            return response.json();
+        });
+}
+
+export const ApiMovieCredits = (movieId) => {
+    const CREDITS_URL = `https://api.themoviedb.org/3/movie/${movieId}/credits`;
+    return fetch(CREDITS_URL, options)
+        .then(response => {
+            return response.json();
+        });
+}

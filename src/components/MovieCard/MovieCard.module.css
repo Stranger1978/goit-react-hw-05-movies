@@ -1,0 +1,7 @@
+.main_info {
+    display: flex;
+    width: 900px;
+    gap: 20px;
+    margin: 20px;
+
+}

@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import { ApiMovieDetails } from "../../Services/API-query";
 import MovieCard from "components/MovieCard/MovieCard";
 import Loader from '../../components/Loader';
 import NotFound from '../../components/NotFound';
+import Button from '../../components/Button';
 
 const STATUS = {
     IDLE: 'idle',
@@ -13,36 +14,37 @@ const STATUS = {
 }
 
 const MovieDetails = () => {
+    const location = useLocation();
+    const linkBack = useRef(location.state?.from ?? '/');
+
     const { movieId } = useParams();
     const [movieDetail, setMovieDetail] = useState({});
     const [status, setStatus] = useState(STATUS.IDLE);
     const [error, setError] = useState(null);
+
+    console.log(location);
+    console.log(linkBack);
  
-    
-    
     useEffect(() => {
-        const detailsInfo = async () => {
             setStatus(STATUS.PENDING);
 
-            try {
-                const results = await ApiMovieDetails(movieId);
-                console.log(results);
-                
-                setMovieDetail(...movieId, results);
-                setStatus(STATUS.RESOLVED);
-                setError('');
-            } catch (error) {
+        ApiMovieDetails(movieId).then((results) => {
+            if (!results) {
                 setStatus(STATUS.REJECTED);
-                setError(error.message);
+                setError('Movie details not found!');
+                return;
             }
-        };
-        detailsInfo();
-         console.log(movieDetail);
-        }, [movieDetail, movieId]);
+            setMovieDetail(results);
+            setStatus(STATUS.RESOLVED);
+            setError('');
+
+        });
+        }, [movieId]);
        
     return (
     
-   <div>
+    <div>
+        <Button location={linkBack.current} />
         {status === STATUS.PENDING && <Loader/>}
         {status === STATUS.REJECTED && <NotFound message={error} />}
         {status === STATUS.RESOLVED && <MovieCard movies={movieDetail} />}
