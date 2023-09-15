@@ -15,7 +15,7 @@ const STATUS = {
     RESOLVED: 'resolved',
 }
 
-const Movies = () => { 
+const Movies = () => {
     const [status, setStatus] = useState(STATUS.IDLE);
     const [error, setError] = useState(null);
     const [searchParams, setSearchParams] = useSearchParams();
@@ -24,8 +24,8 @@ const Movies = () => {
 
     useEffect(() => {
         const queryValue = searchParams.get('query');
-        if (!queryValue) {            
-            return; 
+        if (!queryValue) {
+            return;
         }
 
         setStatus(STATUS.PENDING);
@@ -47,7 +47,7 @@ const Movies = () => {
             setError('');
         })
 
-    }, [searchParams]);      
+    }, [searchParams]);
      
     const onSubmitForm = value => {
         if (value === "") {
@@ -60,12 +60,12 @@ const Movies = () => {
     return (
         <div>
             <SearchMovie onSubmit={onSubmitForm} />
-                {status === STATUS.PENDING && <Loader/>}
-                {status === STATUS.REJECTED && <NotFound message={error} />}
-                {status === STATUS.RESOLVED && <MoviesList movies={movies} />}
+            {status === STATUS.PENDING && <Loader />}
+            {status === STATUS.REJECTED && <NotFound message={error} />}
+            {status === STATUS.RESOLVED && <MoviesList movies={movies} />}
             <ToastContainer onClose={3000} />
-            </div> 
+        </div>
     )
-}
+};
 
 export default Movies;

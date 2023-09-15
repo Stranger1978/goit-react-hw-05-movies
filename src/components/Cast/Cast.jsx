@@ -21,7 +21,7 @@ export const Cast = () => {
         setStatus(STATUS.PENDING);
         
         ApiMovieCredits(movieId).then((results) => {
-            if (!results) {
+            if (results.cast.length === 0) {
                 setStatus(STATUS.REJECTED);
                 setError('Information not found!');
                 return;
@@ -48,7 +48,7 @@ export const Cast = () => {
                 {movieCredits.map(({ id, name, profilePath, character }) => {
                     return (
                         <li key={id}>
-                            <img width="180px"
+                            <img width="150px"
                                 src={
                                     profilePath
                                         ? `https://image.tmdb.org/t/p/w500${profilePath}`

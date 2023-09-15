@@ -1,8 +1,8 @@
-import { Link, Outlet,useLocation } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Style from './MovieCard.module.css';
 
-const MovieCard = ({ movies }) => { 
-  const location = useLocation();
+const MovieCard = ({ movies, linkBack }) => { 
+    console.log(linkBack);
     const {
         genres,
         vote_average,
@@ -19,7 +19,7 @@ const MovieCard = ({ movies }) => {
         <section>
             <div className={Style.main_info}>
             <div className="poster">
-                <img src={poster_link} alt={original_title} width="300px"/>
+                <img src={poster_link} alt={original_title} width="220px"/>
             </div>
             <div> <h1>{original_title}({year})</h1>
                 <p>User Scores: {rating}</p>
@@ -32,10 +32,10 @@ const MovieCard = ({ movies }) => {
         <h3>Additional information</h3>
             <ul>
                 <li>
-                    <Link to='cast' state={location.state}>Cast</Link>
+                    <Link to='cast' state={{ from: linkBack }}>Cast</Link>
                 </li>
                 <li>
-                    <Link to='reviews' state={location.state}>Reviews</Link>
+                    <Link to='reviews' state={{ from: linkBack }}>Reviews</Link>
                 </li>
             </ul>
             <Outlet/>
