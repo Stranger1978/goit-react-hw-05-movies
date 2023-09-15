@@ -1,7 +1,7 @@
 import { useParams, useLocation } from "react-router-dom";
 import { useEffect, useState, useRef} from "react";
 import { ApiMovieDetails } from "../../Services/API-query";
-import MovieCard from "components/MovieCard/MovieCard";
+import MovieCard from '../../components/MovieCard';
 import Loader from '../../components/Loader';
 import NotFound from '../../components/NotFound';
 import Button from '../../components/Button';

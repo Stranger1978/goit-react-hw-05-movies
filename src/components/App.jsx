@@ -5,7 +5,7 @@ import NotFound from "components/NotFound";
 import { Layout } from "./Layout";
 import { Cast }  from "./Cast";
 import { Reviews } from "./Reviews";
-import MovieDetails from "./MovieDetails";
+import MovieDetails from "../pages/MovieDetails";
 
 
 export const App = () => {
