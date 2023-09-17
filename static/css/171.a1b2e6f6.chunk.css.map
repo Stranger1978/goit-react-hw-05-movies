@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/171.a1b2e6f6.chunk.css","mappings":"AAAA,8BAEI,cAAe,CADf,gBAGJ,CCJA,2BACI,gBACJ","sources":["components/NotFound/NotFound.module.css","pages/Home/Home.module.css"],"sourcesContent":[".errorMessage {\n    margin-left: 30px;\n    font-size: 18px;\n\n}",".trandingTitle {\n    margin-left: 50px;\n}"],"names":[],"sourceRoot":""}

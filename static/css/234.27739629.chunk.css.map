@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/234.27739629.chunk.css","mappings":"AAAA,8BAEI,cAAe,CADf,gBAGJ,CCJA,qBACI,oBACJ","sources":["components/NotFound/NotFound.module.css","components/Reviews/Reviews.module.css"],"sourcesContent":[".errorMessage {\n    margin-left: 30px;\n    font-size: 18px;\n\n}",".link {\n    list-style-type: none;\n}"],"names":[],"sourceRoot":""}
