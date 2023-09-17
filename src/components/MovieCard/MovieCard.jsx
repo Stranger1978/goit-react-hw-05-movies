@@ -1,8 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 import Style from './MovieCard.module.css';
+import PropTypes from 'prop-types';
+import { Suspense } from "react";
+import Loader from '../../components/Loader';
 
-const MovieCard = ({ movies, linkBack }) => { 
-    console.log(linkBack);
+const MovieCard = ({ movies }) => {
     const {
         genres,
         vote_average,
@@ -17,9 +19,9 @@ const MovieCard = ({ movies, linkBack }) => {
     return (
         
         <section>
-            <div className={Style.main_info}>
-            <div className="poster">
-                <img src={poster_link} alt={original_title} width="220px"/>
+            <div className={Style.mainInfo}>
+            <div >
+                <img src={poster_link} className={Style.poster} alt={original_title}/>
             </div>
             <div> <h1>{original_title}({year})</h1>
                 <p>User Scores: {rating}</p>
@@ -29,18 +31,31 @@ const MovieCard = ({ movies, linkBack }) => {
                 <p>{genresList ? genresList : "Information is absent!"}</p>
                 </div>
         </div>
-        <h3>Additional information</h3>
+        <h3 className={Style.addInfo}>Additional information</h3>
             <ul>
                 <li>
-                    <Link to='cast' state={{ from: linkBack }}>Cast</Link>
+                    <Link to='cast'>Cast</Link>
                 </li>
                 <li>
-                    <Link to='reviews' state={{ from: linkBack }}>Reviews</Link>
+                    <Link to='reviews'>Reviews</Link>
                 </li>
             </ul>
-            <Outlet/>
+            <Suspense fallback={<Loader/>}>
+                <Outlet/>
+            </Suspense> 
         </section>
     )
 }
 
-export default MovieCard
+export default MovieCard;
+
+MovieCard.propTypes = {
+    movies: PropTypes.shape({
+    original_title: PropTypes.string.isRequired,
+    genres: PropTypes.array,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
+};

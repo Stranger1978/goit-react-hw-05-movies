@@ -1,0 +1,23 @@
+.list {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    list-style-type: none;
+    border-bottom: 2px solid gray;
+    color: black;
+    
+}
+
+.link {
+text-decoration: none;
+}
+
+.link:hover {
+    color: orangered;
+}
+
+.link:active {
+    color: orangered;
+}
+

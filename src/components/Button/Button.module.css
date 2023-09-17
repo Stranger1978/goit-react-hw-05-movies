@@ -1,6 +1,6 @@
 .backLink {
-    gap: 10px;
+    gap: 5px;
     font-size: 14px;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    margin-left: 15px;
+    text-decoration: none;
 }

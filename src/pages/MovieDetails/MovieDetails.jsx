@@ -22,7 +22,7 @@ const MovieDetails = () => {
     const [status, setStatus] = useState(STATUS.IDLE);
     const [error, setError] = useState(null);
 
-    //console.log(location);
+    console.log(location);
     console.log(linkBack);
  
     useEffect(() => {
@@ -47,11 +47,9 @@ const MovieDetails = () => {
         <Button location={linkBack.current} />
         {status === STATUS.PENDING && <Loader/>}
         {status === STATUS.REJECTED && <NotFound message={error} />}
-        {status === STATUS.RESOLVED && <MovieCard movies={movieDetail} linkBack={linkBack} />}
+        {status === STATUS.RESOLVED && <MovieCard movies={movieDetail} />}
     </div> 
     )
 }
 
 export default MovieDetails;
-
- //<Button onClick={} />

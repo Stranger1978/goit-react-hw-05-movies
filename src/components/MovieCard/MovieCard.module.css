@@ -1,7 +1,14 @@
-.main_info {
+.mainInfo {
     display: flex;
     width: 900px;
     gap: 20px;
     margin: 20px;
 
+}
+
+.poster {
+    width: 220px;
+}
+.addInfo {
+    margin-left: 20px;
 }

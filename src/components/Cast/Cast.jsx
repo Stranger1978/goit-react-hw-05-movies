@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ApiMovieCredits } from '../../Services/API-query';
 import Loader from '../../components/Loader';
 import NotFound from '../../components/NotFound';
+import Style from './Cast.module.css';
 
 const STATUS = {
     IDLE: 'idle',
@@ -44,7 +45,7 @@ export const Cast = () => {
             {status === STATUS.PENDING && <Loader/>}
             {status === STATUS.REJECTED && <NotFound message={error} />}
             {status === STATUS.RESOLVED && (
-            <ul>
+            <ul className={Style.link}>
                 {movieCredits.map(({ id, name, profilePath, character }) => {
                     return (
                         <li key={id}>
