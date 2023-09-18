@@ -22,8 +22,8 @@ const MovieDetails = () => {
     const [status, setStatus] = useState(STATUS.IDLE);
     const [error, setError] = useState(null);
 
-    console.log(location);
-    console.log(linkBack);
+    //console.log(location);
+    //console.log(linkBack);
  
     useEffect(() => {
             setStatus(STATUS.PENDING);
