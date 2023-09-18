@@ -9,6 +9,9 @@
 .poster {
     width: 220px;
 }
+
 .addInfo {
+    border-top: 1px solid black;
+    padding-top: 10px;
     margin-left: 20px;
 }
